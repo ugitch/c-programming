@@ -13,13 +13,18 @@ double compute_savings(double balance, retire_info data) {
   return data.contribution + balance * data.rate_of_return;
 }
 
+void print_balance(int age, double balance) {
+    printf("Age %3d month %2d you have $%.2lf\n", age / 12, age % 12, balance);
+}
+
 void retirement (int startAge, double initial, retire_info working, retire_info retired) {
 
   double balance = initial;
   int age = startAge;
+
   // working time
   for (int i = 0; i < working.months; i++) {
-    printf("Age %3d month %2d you have $%.2lf\n", age / 12, age % 12, balance);
+    print_balance(age, balance);
 
     // compute new account balance every month
     balance += compute_savings(balance, working);
@@ -28,7 +33,7 @@ void retirement (int startAge, double initial, retire_info working, retire_info 
 
   // retirement
   for (int i = 0; i < retired.months; i++) {
-    printf("Age %3d month %2d you have $%.2lf\n", age / 12, age % 12, balance);
+    print_balance(age, balance);
 
     balance += compute_savings(balance, retired);
     age++;
@@ -47,5 +52,6 @@ int main (void) {
   double savings = 21345.0;
 
   retirement(age, savings, working, retired);
-  
+
+  return EXIT_SUCCESS;
 }
