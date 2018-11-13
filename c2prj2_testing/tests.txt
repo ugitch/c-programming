@@ -1,0 +1,15 @@
+Ks Jh 0c 6d 8h 5h 4s 2c; 0s Kh Ac 7d 2d 5h 9c
+Ks Jh 0c 5d 8h 5h 4s 2c; 0s Kh Ac 7d 2d 5h 9c
+Ks Jh 0c 6d 8h 6h 4s 2c; 0s Kh Ac 5d 2d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 2c; 0s Ah Jc 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 2c; 0s Kh Qc 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 2c; 3s Kh Jc 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 2c; 0s Kh Jc 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 5s 2c; 0s Kh Ac 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 5s 2c; 0s Ah 5c 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 5c; 0s 5h Kc 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 5c; 0s Kh Ac 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 4s 5c; 0s Kh Ac 3d 6d 5h 9c
+
+
+
