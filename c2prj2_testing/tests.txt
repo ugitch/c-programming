@@ -1,16 +1,27 @@
 Ks Jh 0c 6d 8h 5h 4s; 0s Kh Ac 7d 2d 5h 9c
 Ks Jh 0c 5d 8h 5h 4s; 0s Kh Ac 7d 2d 5h 9c
+
+5d Ks Jh 0c 8h 5h 4s; 0s Kh Ac 5d 2d 5h 9c
+Ks Jh 0c 8h 5h 4s 5d; 0s Kh Ac 5d 2d 5h 9c
+5h Jh 0c Ks 8h 4s 5d; 0s Kh Ac 5d 2d 5h 3c
+5h Jh 0c Ks 8h 5d 4s; 0s Kh Ac 7d 2d 5h 9c
+
 Ks Jh 0c 6d 8h 6h 4s; 0s Kh Ac 5d 2d 5h 9c
 Ks Jh 0c 6d 6h 5h 4s; 0s Ah Jc 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 4s; 0s Kh Qc 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 4s; 3s Kh Jc 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 4s; 0s Kh Jc 6d 6d 5h 9c
-
 Ks Jh 0c 6d 6h 5h 5s; 0s Kh Ac 6d 4d 5h 9c
 Ks Jh 0c 6d 6h 5h 5s; 0s Kh Ac 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 5s; 0s Ah 5c 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 4s; 0s 5h Kc 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 5c; 5s Kh Ac 6d 6d 5h 9c
+Ks 5c 0c 6d 6h 5h Jh; 5s Kh Ac 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 5c; 5s Kh Ac 6d 6d 5h 9c
+6d Ks Jh 0c 6h 5h 5c; 5s Kh Ac 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 5c; 5s Kh Ac 6d 6d 5h 9c
+Ks Jh 0c 6d 6h 5h 5c; 5s Kh Ac 6d 6d 5h 9c
+
 Ks Jh 0c 6d 6h 5h 5c; 5s Kh 9c 6d 6d 5h 9c
 Ks Jh 0c 6d 6h 5h 5c; 5s Kh 9c 6d 6d 5h 9c
 
@@ -100,6 +111,30 @@ As Qs 0s 9h Ks 7c Js; 7d 7c Ks Qd 8s 8s Js
 As Qs 0s 9h Ks 7c Js; 7d 7c Ks Qd 9s 8s Js
 As Qs 0s 9h Ks 7c Js; 7d 3c Ks Qd 9s 8s Js
 
+As Qs 0s 9h Ks 7c Ws; 7d 3c Ks Qd 9s 8s Js
+As Qs 0s 9h Ks 7c Js; xd 3c Ks Qd 9s 8s Js
+As Qs Ad 9h 9s 7c Js; As Qs Ad 9h 9s 7c Ks
+As Qs Ad 9h 9s 7c Js; As Qs Ad 9h 9s 7c 4s
+As 5s 4d 9h 2s 7c 3s; As Qs Ad 9h 9s 7c 4s
+As 5s 4d 9h 2s 7c 3s; Ac 6s 6d 6h 9s 7c 4s
+As 5s 4s 9h 2s 7c 3s; As Kd 0d 6h Js 7c Qs
+As 5s 4s 9h 2s 7c 3s; As 5s 4s Ah 2s 7c 3s
+
+Ks 0s 7d As Qs Qd Js; Ks 0s 7d As Qs 8s Js
+Ks 0s 7d As Qs Qd Js; Ks 0s 7d 9s Qs 6h Js
+Ks 0s 7d As Qs 6d Js; Ks 0s 7d 9s Qs 6h Js
+Ks 0s 7d As Qs 8s Js; Ks 0s 7d As Qs Qc Js
+
+4s 5s 4d As 4c Qs Js; 4s 5s 4d 4c 6c Qs Js
+4s 5s 4d As 4c Qs Js; 4s 5s 4d 4c 5c Qs Js
+4d 5s 4s As 4c Qs Js; 4s 5s 4d 4c 6c Qs Js
+Ks 0s 7d As Qs 8s Js; Ks 0s 7d As Qs Qc Js
+Ks 0s 7d As Qs 8s Js; Ks 0s 7d As Qs Qc Js
+Ks 0s 7d As Qs 8s Js; Ks 0s 7d As Qs Qc Js
+
+2s 2d 4h 5h 9c Js Ad; 4h 5h 9c Js Ad 2d 2s
+2s 2d 1h 5h 9c Js Ad; 4h 5h 9c Js Ad 1d 2s
+
 As Qs 0s 9h Ks 7c Js; 7d 3c Ks Qd 9s 8s Js 8d
 As Qs 0s 9h Ks 7c Js 7s; 7d 3c Ks Qd 9s 8s Js 8d
 As Qs 0s 9h Ks 7c; 7d 3c Ks Qd 9s 8d 8c
@@ -119,11 +154,4 @@ As; 9d
 As;
 
 21 32 43 53 34 43 22; 56 aa bb xx 3w Ks Jd
-
 1s 4s 5s 6s 9s 0d Kc; 7d 3c Ks Qd 8h 8s Qd
-
-As Qs 0s 9h Ks 7c Ws; 7d 3c Ks Qd 9s 8s Js
-As Qs 0s 9h Ks 7c Js; xd 3c Ks Qd 9s 8s Js
-As Qs Ad 9h 9s 7c Js; As Qs Ad 9h 9s 7c Ks
-As Qs Ad 9h 9s 7c Js; As Qs Ad 9h 9s 7c 4s
-
