@@ -2,3 +2,7 @@ Ks Kh 0c 6d 8h 6h 4s; 0s Kh Kc 7d 6d 6h 9c
 Ac Ks Kh 6d 8h 6h 4s; 7d Kh Kc 0s 7d 6h Jc
 Kc Ks Kh 0d 8h 6h 4s; 0d Kh Kc Ks 3d 6h 9c
 Kc Qs Kh 0d 8h Jh 9s; Ad Kh Qc Ks 6h 9c Jd
+Kc Ks Kh 0d 8h Jh 9s; Ad 2h 3c Ks 5h 4c Jd
+Ks Kd Kh 0s 7s Qs 9d; Ad 2c 3s 5h 4c 2d 2h
+Ks Js Kh 0s 9h Qs 9s; Ad 2h 2c 2s 5h 4c 2d
+Ks Js Kh 0s 7s Qs 9d; Ad 2h 2c 2s 5h 4c 2d
