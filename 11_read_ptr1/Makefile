@@ -3,5 +3,5 @@ test: test.c
 	gcc -o test $(CFLAGS) test.c
 .PHONY: clean
 clean:
-	rm -f test output.txt *~
+	rm -f test output* *~
 
