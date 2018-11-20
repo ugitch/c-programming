@@ -3,7 +3,22 @@
 #include <string.h>
 
 void reverse(char * str) {
-  //WRITE ME!
+  char * start = str;
+  char * end = str;
+  char swap = 0;
+
+  // move the end pointer to the end of the string
+  while (*end)
+    end++;
+  end--;
+
+  while (start < end) {
+    swap = *start;
+    *start = *end;
+    *end = swap;
+    start++;
+    end--;
+  }
 }
 
 int main(void) {
