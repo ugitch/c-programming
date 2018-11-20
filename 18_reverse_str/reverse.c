@@ -3,6 +3,8 @@
 #include <string.h>
 
 void reverse(char * str) {
+  if (str == NULL)
+    return;
   char * start = str;
   char * end = str;
   char swap = 0;
