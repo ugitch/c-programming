@@ -4,28 +4,125 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
+  if (vp1 == NULL || vp2 == NULL)
+    return EXIT_FAILURE;
+
+  const card_t * const * card1 = vp1;
+  const card_t * const * card2 = vp2;
+
+  if ((*card1)->value != (*card2)->value)
+    return (*card2)->value - (*card1)->value;
+  else
+    return (*card1)->suit - (*card2)->suit;
   return 0;
 }
 
 suit_t flush_suit(deck_t * hand) {
- return NUM_SUITS;
+  for (suit_t flush = 0; flush <= 3; flush++) {
+    int suit_cards = 0;
+    for (int i = 0; i < hand->n_cards; i++) {
+      if (hand->cards[i]->suit == flush)
+	suit_cards++;
+      if (suit_cards == 5)
+	return flush;
+    }
+  }
+  return NUM_SUITS;
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
- return 0;
+  unsigned largest = 0;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] > largest)
+      largest = arr[i];
+  }
+  return largest;
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-
- return 0;
+  for (int i = 0; i < n; i++) {
+    if (match_counts[i] == n_of_akind)
+      return i;
+  }
+  return 0;
 }
+
 ssize_t  find_secondary_pair(deck_t * hand,
 			     unsigned * match_counts,
 			     size_t match_idx) {
+  
+  for (int i = 0; i < hand->n_cards; i++) {
+    if (match_counts[i] > 1 && hand->cards[i]->value != hand->cards[match_idx]->value)
+      return i;
+  }
   return -1;
 }
 
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  card_t * temp = hand->cards[index];
+  int cards_in_row = 1;
+  
+  if (fs != NUM_SUITS && fs != temp->suit)
+    return 0;
+  
+  for (int i = index + 1; i < hand->n_cards; i++) {
+    if (hand->cards[i]->value == temp->value)
+      continue;
+    else if (hand->cards[i]->value == temp->value - 1) {
+      if (fs != NUM_SUITS && fs == hand->cards[i]->suit)
+  	cards_in_row++;
+      else if (fs == NUM_SUITS)
+  	cards_in_row++;
+    }
+    else
+      break;
+    temp = hand->cards[i];
+  }
+
+  if (cards_in_row == 5)
+    return 1;
+  
+  // find a 5 at index spot
+  if (hand->cards[index]->value != 5)
+    return 0;
+
+  cards_in_row = 1;
+
+  // find if there is an Ace for ace low
+  for (int i = 0; i < hand->n_cards; i++) {
+    if (hand->cards[i]->value == VALUE_ACE) {
+      if (fs == NUM_SUITS) {
+  	cards_in_row++;
+  	break;
+      }
+      else if (hand->cards[i]->suit == fs) {
+  	cards_in_row++;
+  	break;
+      }
+      else
+  	continue;
+    }
+    else
+      return 0;
+  }
+
+  // complete ace low straight (flush)
+  int search_for_card = 4;
+  for (int i = index + 1; i < hand->n_cards; i++) {
+    if (hand->cards[i]->value == search_for_card) {
+      if (fs == NUM_SUITS) {
+  	cards_in_row++;
+  	search_for_card--;
+      }
+      else if (hand->cards[i]->suit == fs) {
+  	cards_in_row++;
+  	search_for_card--;
+      }
+    }
+    if (cards_in_row == 5)
+      return -1;
+  }
+  
   return 0;
 }
 
@@ -35,6 +132,26 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  size_t idx) {
 
   hand_eval_t ans;
+  ans.ranking = what;
+  int index = 0;
+  int cards_to_fill = 5 - n;
+  int nofkind_card = 0;
+
+  for (int i = idx; i < idx + n; i++) {
+    ans.cards[index] = hand->cards[i];
+    nofkind_card = ans.cards[index]->value;
+    index++;
+  }
+
+  for (int i = 0; i < hand->n_cards; i++) {
+    if (hand->cards[i]->value != nofkind_card) {
+      ans.cards[index] = hand->cards[i];
+      cards_to_fill--;
+      index++;
+    }
+    if (cards_to_fill == 0)
+      break;
+  }
   return ans;
 }
 
