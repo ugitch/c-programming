@@ -223,9 +223,17 @@ int find_straight(deck_t * hand, suit_t fs, hand_eval_t * ans) {
   if (hand->n_cards < 5){
     return 0;
   }
+  for(size_t i = 0; i <= hand->n_cards - 5; i++) {
+    int x = is_straight_at(hand, i, fs);
+    if (x > 0) {
+      copy_straight(ans->cards, hand, i, fs, 5);
+      return 1;
+    }
+  }
+  // We have to check ace low straight LAST since
+  // Ac 6c 5c 4c 3c 2c will give the ace low otherwise
   for(size_t i = 0; i <= hand->n_cards -5; i++) {
     int x = is_straight_at(hand, i, fs);
-    if (x != 0){
       if (x < 0) { //ace low straight
   assert(hand->cards[i]->value == VALUE_ACE &&
          (fs == NUM_SUITS || hand->cards[i]->suit == fs));
@@ -237,11 +245,7 @@ int find_straight(deck_t * hand, suit_t fs, hand_eval_t * ans) {
     assert(cpind < hand->n_cards);
   }
   copy_straight(ans->cards, hand, cpind, fs,4) ;
-      }
-      else {
-  copy_straight(ans->cards, hand, i, fs,5);
-      }
-      return 1;
+  return 1;
     }
   }
   return 0;
