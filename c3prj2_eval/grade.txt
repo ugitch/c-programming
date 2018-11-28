@@ -1,6 +1,6 @@
-Grading at Wed Nov 28 22:37:01 UTC 2018
+Grading at Wed Nov 28 23:03:33 UTC 2018
 Compiling your code
-rm test poker cards.o my-test-main.o *~
+rm test poker cards.o my-test-main.o *~ cards.o deck.o eval.o test-eval 
 Makefile:10: recipe for target 'clean' failed
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o eval.o eval.c
@@ -1358,6 +1358,8 @@ Line_57_did_not_match
 Line_59_did_not_match
 Line_62_did_not_match
 Line_73_did_not_match
+Line_87_did_not_match
+Line_90_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -1451,10 +1453,10 @@ Ac 6c 5c 4c 3c 2c 						Ac 6c 5c 4c 3c 2c
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
- - 5 cards used for hand: 5c 4c 3c 2c Ac 			 - 5 cards used for hand: 5c 4c 3c 2c Ac 
+ - 5 cards used for hand: 5c 4c 3c 2c Ac 		      |	 - 5 cards used for hand: 6c 5c 4c 3c 2c 
 Comparison : 							Comparison : 
 --------------							--------------
-Tie								Tie
+Tie							      |	Hand 2 wins!
 ============================					============================
 Hand 1:								Hand 1:
 --------							--------
