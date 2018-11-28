@@ -7,4 +7,4 @@ test-eval: deck.o eval.o eval-c4.o test-eval.o deck-c4.o cards.o input.o future.
 poker: $(GIVEN_OBJS) $(MY_OBJS)
 	gcc -o poker -ggdb3  $(MY_OBJS) $(GIVEN_OBJS)
 clean:
-	rm test poker cards.o my-test-main.o *~
+	rm test poker cards.o my-test-main.o *~ cards.o deck.o eval.o test-eval 
