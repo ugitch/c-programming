@@ -1,4 +1,4 @@
-Grading at Wed Nov 28 23:03:33 UTC 2018
+Grading at Thu Nov 29 20:35:58 UTC 2018
 Compiling your code
 rm test poker cards.o my-test-main.o *~ cards.o deck.o eval.o test-eval 
 Makefile:10: recipe for target 'clean' failed
@@ -7,9 +7,51 @@ cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o eval.o eval.c
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o cards.o cards.c
 gcc -o test-eval -ggdb3 deck.o deck-c4.o eval-c4.o eval.o test-eval.o cards.o input.o future.o
 Testcase 1: Trying hands with nothing
- Checking the output 
-Your file matched the expected output
- - Testcase passed
+Valgrind returned an error status
+==183== Memcheck, a memory error detector
+==183== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==183== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==183== Command: ./test-eval inp.1.txt
+==183== Parent PID: 182
+==183== 
+==183== Use of uninitialised value of size 8
+==183==    at 0x400C02: print_hand (deck.c:7)
+==183==    by 0x4027BF: describe_hand (test-eval.c:74)
+==183==    by 0x40299F: main (test-eval.c:116)
+==183== 
+==183== Invalid read of size 8
+==183==    at 0x400C02: print_hand (deck.c:7)
+==183==    by 0x4027BF: describe_hand (test-eval.c:74)
+==183==    by 0x40299F: main (test-eval.c:116)
+==183==  Address 0x1 is not stack'd, malloc'd or (recently) free'd
+==183== 
+==183== 
+==183== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==183==  Access not within mapped region at address 0x1
+==183==    at 0x400C02: print_hand (deck.c:7)
+==183==    by 0x4027BF: describe_hand (test-eval.c:74)
+==183==    by 0x40299F: main (test-eval.c:116)
+==183==  If you believe this happened as a result of a stack
+==183==  overflow in your program's main thread (unlikely but
+==183==  possible), you can try to increase the size of the
+==183==  main thread stack using the --main-stacksize= flag.
+==183==  The main thread stack size used in this run was 8388608.
+==183== 
+==183== HEAP SUMMARY:
+==183==     in use at exit: 864 bytes in 16 blocks
+==183==   total heap usage: 202 allocs, 186 frees, 12,472 bytes allocated
+==183== 
+==183== LEAK SUMMARY:
+==183==    definitely lost: 0 bytes in 0 blocks
+==183==    indirectly lost: 0 bytes in 0 blocks
+==183==      possibly lost: 0 bytes in 0 blocks
+==183==    still reachable: 864 bytes in 16 blocks
+==183==         suppressed: 0 bytes in 0 blocks
+==183== Rerun with --leak-check=full to see details of leaked memory
+==183== 
+==183== For counts of detected and suppressed errors, rerun with: -v
+==183== Use --track-origins=yes to see where uninitialised values come from
+==183== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 Testcase 2: Trying hands with pairs
  Checking the output 
 Line_3_did_not_match
@@ -508,8 +550,6 @@ Line_47_did_not_match
 Line_54_did_not_match
 Line_57_did_not_match
 Line_63_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -636,16 +676,16 @@ Hand 2:								Hand 2:
 --------							--------
 Jh 0s 9c 8s 7c 6c 5d 						Jh 0s 9c 8s 7c 6c 5d 
  - No flush							 - No flush
- - Straight at index 0					      <
- - Straight at index 1					      <
+ - Straight at index 0						 - Straight at index 0
+ - Straight at index 1						 - Straight at index 1
  - Straight at index 2						 - Straight at index 2
  - The most of a kind is 1 of a kind (at index 0 / value J)	 - The most of a kind is 1 of a kind (at index 0 / value J)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT				 - evaluate_hand's ranking: STRAIGHT
- - 5 cards used for hand: Jh 0s 9c 8s 7c 		      |	 - 5 cards used for hand: 9c 8s 7c 6c 5d 
+ - 5 cards used for hand: Jh 0s 9c 8s 7c 			 - 5 cards used for hand: Jh 0s 9c 8s 7c 
 Comparison : 							Comparison : 
 --------------							--------------
-Tie							      |	Hand 1 wins!
+Tie								Tie
 ============================					============================
 Testcase 6: Trying hands with flushes
  Checking the output 
@@ -1349,17 +1389,12 @@ Hand 1 wins!							Hand 1 wins!
 ============================					============================
 Testcase 9: Trying hands with straight flushes
  Checking the output 
-Line_31_did_not_match
-Line_40_did_not_match
-Line_47_did_not_match
-Line_49_did_not_match
-Line_50_did_not_match
-Line_57_did_not_match
-Line_59_did_not_match
-Line_62_did_not_match
-Line_73_did_not_match
-Line_87_did_not_match
-Line_90_did_not_match
+Line_51_did_not_match
+Line_53_did_not_match
+Line_54_did_not_match
+Line_61_did_not_match
+Line_91_did_not_match
+Line_94_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -1388,24 +1423,24 @@ Hand 1:								Hand 1:
 --------							--------
 As Ks Qs Js 0s 9s 8s 						As Ks Qs Js 0s 9s 8s 
  - Flush in suit s						 - Flush in suit s
- - Straight flush at index 0				      <
- - Straight flush at index 1				      <
+ - Straight flush at index 0					 - Straight flush at index 0
+ - Straight flush at index 1					 - Straight flush at index 1
  - Straight flush at index 2					 - Straight flush at index 2
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
- - 5 cards used for hand: As Ks Qs Js 0s 		      |	 - 5 cards used for hand: Qs Js 0s 9s 8s 
+ - 5 cards used for hand: As Ks Qs Js 0s 			 - 5 cards used for hand: As Ks Qs Js 0s 
 Hand 2:								Hand 2:
 --------							--------
 Kh Qh Jh 0h 9h 8h 7h 						Kh Qh Jh 0h 9h 8h 7h 
  - Flush in suit h						 - Flush in suit h
- - Straight flush at index 0				      <
- - Straight flush at index 1				      <
+ - Straight flush at index 0					 - Straight flush at index 0
+ - Straight flush at index 1					 - Straight flush at index 1
  - Straight flush at index 2					 - Straight flush at index 2
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
- - 5 cards used for hand: Kh Qh Jh 0h 9h 		      |	 - 5 cards used for hand: Jh 0h 9h 8h 7h 
+ - 5 cards used for hand: Kh Qh Jh 0h 9h 			 - 5 cards used for hand: Kh Qh Jh 0h 9h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -1424,11 +1459,11 @@ Hand 2:								Hand 2:
 --------							--------
 Ad Kh Qh Jh Js 0h 9h 					      |	Ad Kh Qh Js Jh 0h 9h 
  - Flush in suit h						 - Flush in suit h
- - Straight at index 0					      |	 - Straight at index 1
- - Straight flush at index 1				      <
+ - Straight at index 0						 - Straight at index 0
+ - Straight flush at index 1					 - Straight flush at index 1
  - The most of a kind is 2 of a kind (at index 3 / value J)	 - The most of a kind is 2 of a kind (at index 3 / value J)
  - No secondary pair						 - No secondary pair
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
  - 5 cards used for hand: Kh Qh Jh 0h 9h 			 - 5 cards used for hand: Kh Qh Jh 0h 9h 
 Comparison : 							Comparison : 
 --------------							--------------
@@ -1439,7 +1474,6 @@ Hand 1:								Hand 1:
 Ah Kc 5h 4h 3h 2h 						Ah Kc 5h 4h 3h 2h 
  - Flush in suit h						 - Flush in suit h
  - Straight flush at index 0					 - Straight flush at index 0
-							      >	 - Straight at index 1
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
@@ -1486,6 +1520,7 @@ Line_12_did_not_match
 Line_17_did_not_match
 Line_33_did_not_match
 Line_38_did_not_match
+Line_59_did_not_match
 Line_75_did_not_match
 Line_80_did_not_match
 Line_140_did_not_match
@@ -1500,6 +1535,7 @@ Line_202_did_not_match
 Line_207_did_not_match
 Line_214_did_not_match
 Line_219_did_not_match
+Line_227_did_not_match
 Line_234_did_not_match
 Line_239_did_not_match
 Line_242_did_not_match
@@ -1524,6 +1560,7 @@ Line_365_did_not_match
 Line_370_did_not_match
 Line_377_did_not_match
 Line_382_did_not_match
+Line_390_did_not_match
 Line_397_did_not_match
 Line_402_did_not_match
 Line_405_did_not_match
@@ -1540,14 +1577,22 @@ Line_479_did_not_match
 Line_484_did_not_match
 Line_487_did_not_match
 Line_492_did_not_match
+Line_504_did_not_match
+Line_525_did_not_match
 Line_528_did_not_match
 Line_533_did_not_match
+Line_545_did_not_match
 Line_548_did_not_match
 Line_553_did_not_match
+Line_565_did_not_match
 Line_568_did_not_match
 Line_573_did_not_match
+Line_585_did_not_match
+Line_606_did_not_match
+Line_627_did_not_match
 Line_630_did_not_match
 Line_635_did_not_match
+Line_647_did_not_match
 Line_650_did_not_match
 Line_655_did_not_match
 Line_662_did_not_match
@@ -1562,6 +1607,7 @@ Line_711_did_not_match
 Line_716_did_not_match
 Line_723_did_not_match
 Line_728_did_not_match
+Line_736_did_not_match
 Line_743_did_not_match
 Line_748_did_not_match
 Line_764_did_not_match
@@ -1578,6 +1624,7 @@ Line_856_did_not_match
 Line_861_did_not_match
 Line_877_did_not_match
 Line_882_did_not_match
+Line_903_did_not_match
 Line_919_did_not_match
 Line_924_did_not_match
 Line_962_did_not_match
@@ -1588,6 +1635,7 @@ Line_1026_did_not_match
 Line_1031_did_not_match
 Line_1047_did_not_match
 Line_1052_did_not_match
+Line_1073_did_not_match
 Line_1089_did_not_match
 Line_1094_did_not_match
 Line_1132_did_not_match
@@ -1606,6 +1654,7 @@ Line_1214_did_not_match
 Line_1219_did_not_match
 Line_1226_did_not_match
 Line_1231_did_not_match
+Line_1239_did_not_match
 Line_1246_did_not_match
 Line_1251_did_not_match
 Line_1254_did_not_match
@@ -1630,6 +1679,7 @@ Line_1377_did_not_match
 Line_1382_did_not_match
 Line_1389_did_not_match
 Line_1394_did_not_match
+Line_1402_did_not_match
 Line_1409_did_not_match
 Line_1414_did_not_match
 Line_1417_did_not_match
@@ -1702,7 +1752,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -1870,7 +1920,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -2033,7 +2083,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -2147,7 +2197,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 As Ks Qc Js 0s 3s 						As Ks Qc Js 0s 3s 
@@ -2168,7 +2218,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Kc Kd Kh Ks 8c 6d 					      |	Ks Kh Kd Kc 8c 6d 
@@ -2188,7 +2238,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Kd Kh Ks 9h 7c 7h 2h 					      |	Ks Kh Kd 9h 7h 7c 2h 
@@ -2208,7 +2258,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Kc Ks Js 9h 2c 						      |	Ks Kc Js 9h 2c 
@@ -2228,7 +2278,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Kh Qh Jh 0h 9h 							Kh Qh Jh 0h 9h 
@@ -2249,7 +2299,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Js 0c 9s 8d 7c 							Js 0c 9s 8d 7c 
@@ -2270,7 +2320,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Jc Jd Jh 7c 5h 2c 					      |	Jh Jd Jc 7c 5h 2c 
@@ -2290,7 +2340,7 @@ As Qd 9h 7c 3d 2s 						As Qd 9h 7c 3d 2s
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: As Qd 9h 7c 3d 			 - 5 cards used for hand: As Qd 9h 7c 3d 
+ - 5 cards used for hand: As Qd 9h 7c 3d 		      |	 - 5 cards used for hand: Qd 9h 7c 3d 2s 
 Hand 2:								Hand 2:
 --------							--------
 Ad Ah Kd Ks 3h 						      |	Ah Ad Ks Kd 3h 
@@ -2379,7 +2429,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -2546,7 +2596,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -2716,7 +2766,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -2882,7 +2932,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
@@ -3045,7 +3095,7 @@ Kc Js 7h 6c 4d 2h 						Kc Js 7h 6c 4d 2h
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: NOTHING				 - evaluate_hand's ranking: NOTHING
- - 5 cards used for hand: Kc Js 7h 6c 4d 			 - 5 cards used for hand: Kc Js 7h 6c 4d 
+ - 5 cards used for hand: Kc Js 7h 6c 4d 		      |	 - 5 cards used for hand: Js 7h 6c 4d 2h 
 Comparison : 							Comparison : 
 --------------							--------------
 Hand 1 wins!							Hand 1 wins!
