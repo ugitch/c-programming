@@ -4,17 +4,11 @@
 
 void countFrequency(FILE * f, int * array) {
   int c = 0;
-  int checkEmptyFile = 0;
   while ((c = fgetc(f)) != EOF) {
-    checkEmptyFile++;
     if (isalpha(c)) {
       c = tolower(c);
       array[c-97]++;
     }
-  }
-  if (checkEmptyFile == 0) {
-    fprintf(stderr, "Empty file!\n");
-    exit(EXIT_FAILURE);
   }
 }
 
@@ -37,6 +31,10 @@ int decrypt(FILE * f) {
   countFrequency(f, array);
 
   int pos_e = getMax(array);
+  if (pos_e == 0) {
+    fprintf(stderr, "Possibly empty file!\n");
+    return EXIT_FAILURE;
+  }
   int code = pos_e + 97 - 'e';  
 
   return code;
