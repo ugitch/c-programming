@@ -4,11 +4,17 @@
 
 void countFrequency(FILE * f, int * array) {
   int c = 0;
+  int checkEmptyFile = 0;
   while ((c = fgetc(f)) != EOF) {
+    checkEmptyFile++;
     if (isalpha(c)) {
       c = tolower(c);
       array[c-97]++;
     }
+  }
+  if (checkEmptyFile == 0) {
+    fprintf(stderr, "Empty file!\n");
+    exit(EXIT_FAILURE);
   }
 }
 
